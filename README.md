@@ -1,194 +1,61 @@
-# xmas
+# 醬A的聖誕夜 — 選擇式互動遊戲
 
-simple AVG build
+## 專案簡介
+這是一款使用純 HTML 和 JavaScript 製作的小型互動式文字冒險遊戲。  
+玩家通過不同的選擇，推進主角「醬A」的聖誕夜故事，最終導向不同的結局。
 
-這是簡單的AVG生成器，只需編輯gamescript.js文件內容可以快速簡單生成一款AVG。<br/>
-請依以下說明修改gamescript.js內容<br/>
-<pre>
-<--過程內容編輯-->
-    'act': {
-        <--過程編號-->
-        'act0': {
-            <--除了第一個場景，其餘皆不顯示-->
-            'display': 'block',
-            <--結局文字內容 1個array item為一行 自動換行-->
-            'pre': ['醬A有心動的妹仔', '但他很迷茫', '不知道自己要幹甚麼'],
-            <--選項設置 請依大寫字姆A->Z編號-->
-            'button': 
-                <--通往下一個場景-->
-                'A': 
-                    <--選項文字-->
-                    'text': '醬A決定認真行動',
-                    <--下一個場景之編號-->
-                    'next': 'act1',
-                    <--是否具焦於下一個場景-->
-                    'foc': true,
-                    <--隱藏其他不想顯示的場景-->
-                    'hidden': ['act2', 'act3', 'act4', 'act5', 'act6', 'end1', 'end2', 'end3']
-                },
-                <--通往結局之按鈕-->
-                'B': {
-                    'text': '醬A決定甚麼都不幹',
-                    'next': 'end1',
-                   <--結局場景不予以具焦-->
-                    'foc': false,
-                    'hidden': ['act1', 'act2', 'act3', 'act4', 'act5', 'act6', 'end2', 'end3']
-                }
-            }
-        },
-        'act1': {
-            'display': 'none',
-            'pre': ['但總總複雜的因素讓醬A猶豫不前', '醬A不知道該怎麼做', '於是他'],
-            'button': {
-                'A': {
-                    'text': '嘗試跟妹仔調情',
-                    'next': 'act2',
-                    'foc': true,
-                    'hidden': ['act3', 'act4', 'act5', 'act6', 'end1', 'end2', 'end3']
-                },
-                'B': {
-                    'text': '決定在旁邊觀望',
-                    'next': 'end1',
-                    'foc': false,
-                    'hidden': ['act2', 'act3', 'act4', 'act5', 'act6', 'end2', 'end3']
-                }
-            }
-        },
-         <--過程編號 其餘相同-->
-        'act2': {
-            <--除了第一個場景，其餘皆不顯示-->
-            'display': 'none',
-            'pre': ['但妹仔對於醬A的挑逗'],
-            'button': {
-                'A': {
-                    'text': '熱切的回應',
-                    'next': 'act3',
-                    'foc': true,
-                    'hidden': ['act4', 'act5', 'act6', 'end1', 'end2', 'end3']
-                },
-                'B': {
-                    'text': '因為醬A味太重不接受',
-                    'next': 'end1',
-                    'foc': false,
-                    'hidden': ['act3', 'act4', 'act5', 'act6', 'end2', 'end3']
-                }
-            }
-        },
-        'act3': {
-            'display': 'none',
-            'pre': ['醬A爽到不行', '而這份爽感讓他'],
-            'button': {
-                'A': {
-                    'text': '有了繼續下去的動力',
-                    'next': 'act4',
-                    'foc': true,
-                    'hidden': ['act5', 'act6', 'end1', 'end2', 'end3']
-                },
-                'B': {
-                    'text': '心滿意足 停止行動',
-                    'next': 'end2',
-                    'foc': false,
-                    'hidden': ['act4', 'act5', 'act6', 'end1', 'end3']
-                }
-            }
-        },
-        'act4': {
-            'display': 'none',
-            'pre': [' 醬A直搗黃龍', '使出自己所有的技巧', '跟妹仔纏綿'],
-            'button': {
-                'A': {
-                    'text': '最帥的男人總是做得恰到好處',
-                    'next': 'act5',
-                    'foc': true,
-                    'hidden': ['act6', 'end1', 'end2', 'end3']
-                },
-                'B': {
-                    'text': '但醬A拿捏不了尺度',
-                    'next': 'end2',
-                    'foc': false,
-                    'hidden': ['act5', 'act6', 'end1', 'end3']
-                }
-            }
-        },
-        'act5': {
-            'display': 'none',
-            'pre': ['最終在聖誕夜來臨前'],
-            'button': {
-                'A': {
-                    'text': '醬A提出了邀約',
-                    'next': 'act6',
-                    'foc': true,
-                    'hidden': ['end1', 'end2', 'end3']
-                },
-                'B': {
-                    'text': '醬A沒有提出邀約',
-                    'next': 'end2',
-                    'hidden': ['act6', 'end1', 'end3']
-                }
-            }
-        },
-        'act6': {
-            'display': 'none',
-            'pre': ['聖誕夜到了', ' 兩人吃美食 逛耶誕城', '寒冷的晚風中兩人心是火熱的', '就這樣持續到了分開的時候'],
-            'button': {
-                'A': {
-                    'text': '不要走 今晚留下來',
-                    'next': 'end3',
-                    'foc': false,
-                    'hidden': ['end1', 'end2']
-                },
-                'B': {
-                    'text': '醬A心滿意足的回家',
-                    'next': 'end1',
-                    'foc': false,
-                    'hidden': ['end2', 'end3']
-                }
-            }
-        }
-    },
-     <--結局內容編輯-->
-    'end': {
-        <--結局編號-->
-        'end1': {
-            <--結局類型(限制 good normal bad)-->
-            'type': 'bad',
-            <--結局一律不予先顯示-->
-            'display': 'none',
-            <--結局文字內容 1個array item為一行 自動換行-->
-            'pre': ['聖誕夜當天，醬A孤單寂寞覺得冷'],
-            <--僅normal及bad結局開放使用重新開始按鈕-->
-            'button': {
-                'good': {
-                   <--按鈕文字-->
-                    'text': '雖然只是遊戲，但可不是鬧著玩的，醬A該動作了吧',
-                    <--回到場景1-->
-                    'next': 'act0',
-                    <--隱藏除了場景1外所有內容-->
-                    'hidden': ['act1', 'act2', 'act3', 'act4', 'act5', 'act6', 'end1', 'end2', 'end3']
-                }
-            }
-        },
-       <--壞結局2 其餘同1-->
-        'end2': {
-            'type': 'bad',
-            'display': 'none',
-            'pre': ['聖誕夜當天，醬A失落的回家'],
-            'button': {
-                'good': {
-                    'text': '雖然只是遊戲，但可不是鬧著玩的，醬A該動作了吧',
-                    'next': 'act0',
-                    'hidden': ['act1', 'act2', 'act3', 'act4', 'act5', 'act6', 'end1', 'end2', 'end3']
-                }
-            }
-        },
-       <--good結局-->
-        'end3': {
-            'type': 'good',
-            'display': 'none',
-            'pre': ['在神聖的夜晚，醬A跟妹仔二人幸終'],
-            <--祝賀文字-->
-            'text': 'Perfect Communication',
-            'hidden': ['end1', 'end2']
+## 專案結構
+- `index.html` — 主頁面，負責載入腳本。
+- `gamescript.js` — 定義遊戲腳本（場景、文字、按鈕分支）。
+- `gamebuild.js` — 根據腳本自動產生 HTML 畫面和切換邏輯。
+
+## 如何執行
+1. 將三個檔案放在同一個資料夾內。
+2. 使用瀏覽器開啟 `index.html`。
+3. 開始遊玩！
+
+> 本遊戲為靜態頁面，無需伺服器，直接開啟即可使用。
+
+## 玩法說明
+- 根據螢幕上出現的敘述和選項進行選擇。
+- 不同的選擇會觸發不同的故事分支與結局。
+- 遊戲包含「好結局（Good End）」與「壞結局（Bad End）」。
+
+## 檔案詳細說明
+
+### gamescript.js
+- 定義了所有章節（`act0` ~ `act6`）與結局（`end1`, `end2`, `end3`）。
+- 每個章節設定：
+  - `display`：初始是否顯示。
+  - `pre`：段落文字。
+  - `button`：提供給玩家的選擇按鈕及分支設定。
+
+### gamebuild.js
+- `startbuild()`：初始化並建立所有章節。
+- `buildmain()`：生成章節畫面。
+- `creatediv()`：建立每個章節的容器。
+- `createpre()`：插入段落文字。
+- `createbutton()`：生成可點擊的選項按鈕。
+- `actmove()`：根據選擇切換到下一個章節。
+- `buttonfuncre()`：綁定按鈕點擊事件。
+
+## 如何自訂
+想要新增或修改劇情，只需要編輯 `gamescript.js` 中的內容：
+1. 新增新的章節 (`actX`)。
+2. 設定該章節的 `pre` 敘述文字。
+3. 定義玩家可以選擇的 `button`，指定每個按鈕跳轉到哪個章節。
+
+### 例子
+```javascript
+'act7': {
+    'display': 'none',
+    'pre': ['醬A面對新的挑戰...'],
+    'button': {
+        'A': {
+            'text': '勇敢前進',
+            'next': 'end3',
+            'foc': true,
+            'hidden': ['其他章節']
         }
     }
-</pre>
+}
